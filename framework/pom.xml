@@ -1,0 +1,483 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>framework_snt</groupId>
+  <artifactId>SFP_build</artifactId>
+  <packaging>pom</packaging>
+  <name>SFP framework</name>
+  <version>12.5.1</version>
+  <!--
+    To change update the SFP version, run the following maven command:
+    mvn versions:set -DnewVersion=xx.yy
+
+  -->
+
+  <modules>
+    <module>ASIF Common</module>
+    <module>Async MF</module>
+	<module>AuditTrail_Client</module>
+    <module>Authentication</module>
+    <module>Authorization_Agent</module>
+    <module>Authorization_Common</module>
+	<module>Authorization_Console_Agent</module>
+    <module>BPF Client</module>
+    <module>BPF Common</module>
+    <module>CBT_Agent</module>
+    <module>CCFW Utils</module>
+    <module>CPFW Utils</module>
+	<module>EnvironmentVisibilityService</module>
+    <module>ESMClientLib</module>
+    <module>ESMUtils</module>
+    <module>FODE_Client</module>
+    <module>FODE_Common</module>
+    <module>Framework Simple Configuration Management</module>
+    <module>frm_build</module>
+    <module>IODT</module>
+    <module>JMSWrapper</module>
+    <module>JMXUtils</module>
+    <module>Logging Framework</module>
+    <module>LTS_Common</module>
+    <module>LTS_Agent</module>
+    <module>LODSRequestAdapter</module>
+    <module>NumGenAgent</module>
+    <module>OOCL ART Framework</module>
+    <module>OOCL CSC Common Component</module>
+    <module>OOCL FIL Application Edition Component</module>
+    <module>OOCL FIL ART Component</module>
+    <module>OOCL FIL Authentication Component</module>
+    <module>OOCL FIL Common Component</module>
+    <module>OOCL FIL Configuration Component</module>
+    <module>OOCL FIL Configuration Loader Component</module>
+    <module>OOCL FIL Context Controller Component</module>
+    <module>OOCL FIL Debug Logging Component</module>
+    <module>OOCL FIL Dynamic Configuration Component</module>
+    <module>OOCL FIL Email Notification Component</module>
+    <module>OOCL FIL Exception Logging Component</module>
+    <module>OOCL FIL Message Logging Component</module>
+    <module>OOCL FIL Object Modeling Component</module>
+    <module>OOCL Framework Common</module>
+    <module>OOCL JPA Persistence Framework</module>
+    <module>OOCL JPA Transaction Framework</module>
+    <module>OOCL Persistence Interface Component</module>
+    <module>OOCL Persistence Object Model</module>
+    <module>OOCL Priority Queue Handling</module>
+    <module>OOCL Simple Log System</module>
+    <module>OOCL SOA BSF Component</module>
+    <module>OOCL SOA IO Component</module>
+    <module>OOCL SOA PSG Component</module>
+    <module>OOCL Transaction Management Component</module>
+    <module>OOCL Utilities</module>
+    <module>OOCL_Common_Utilities</module>
+    <module>OOCL_FWK_Utilities</module>
+    <module>QueryCache</module>
+    <module>SSO</module>
+    <module>TIBCO_INT/BE/BE_FILIntegration</module>
+    <module>TIR Client</module>
+    <module>TIR Common</module>
+    <module>Cache Interface Framework</module>
+    <module>OOCL Transaction Common</module>
+    <module>XGen Java</module>
+    <module>xmltools</module>
+    <module>MLT</module>
+    <module>UserProfileAgent</module>
+    <module>UserProfileCommon</module>
+    <module>UserPreferenceAgent</module>
+	<module>UserPreferenceCommon</module>
+	<module>DRT_Common</module>
+    <module>DRT_DomainMetadata</module>
+    <module>DRT_DomainServer</module>
+    <module>DRT_PresentationServer</module>
+    <module>DRT_ReportingService</module>
+	<module>Validation Framework</module>
+</modules>
+
+  <properties>
+    <project.build.sourceEncoding>Cp1252</project.build.sourceEncoding>
+    <java-version>1.6</java-version>
+    <searchRepo>framework_snt</searchRepo>
+  </properties>
+
+  <distributionManagement>
+    <repository>
+      <id>deploy</id>
+      <name>build server repository</name>
+      <url>${repoHost}/framework_snt</url>
+    </repository>
+    <snapshotRepository>
+      <uniqueVersion>true</uniqueVersion>
+      <id>deploy</id>
+      <name>build server repository</name>
+      <url>${repoHost}/ir4_snapshot</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- Thirdparty tools versions needed to compile -->
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>ASM</artifactId><version>3.1</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>aopalliance</artifactId><version>1.0</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>aspose.cells</artifactId><version>8.5.2</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>bouncycastle.crypto</artifactId><version>1.46.0_JDK1.6</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>classmate</artifactId><version>0.8.0</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>cloning</artifactId><version>1.9.0</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>coherence</artifactId><version>3.7.1.7</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>commons-cli</artifactId><version>1.2</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>commons-codec</artifactId><version>1.3</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>commons-collection</artifactId><version>3.2</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>commons-compress</artifactId><version>1.8.1</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>Commons-IO</artifactId><version>1.3.2</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>commons-lang</artifactId><version>2.6</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>commons-logging</artifactId><version>1.0.3</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>commons-pool</artifactId><version>1.3</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>commons-vfs</artifactId><version>2.0</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>commons-dbcp</artifactId><version>1.2.1</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>EclipseLink</artifactId><version>2.1.2_17244308</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>emf</artifactId><version>2.7.0.v20120127</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>hamcrest-core</artifactId><version>1.1</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>hibernate-validator</artifactId><version>5.0.1.Final</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>httpclient</artifactId><version>4.2.3</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>httpcore-nio</artifactId><version>4.2.3</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>httpcore</artifactId><version>4.2.3</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>httpunit</artifactId><version>1.6.2</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>Jackson</artifactId><version>1.9.11</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>java_uuid</artifactId><version>1.0</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>javax-validation</artifactId><version>1.1.0.Final</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>jawr</artifactId><version>3.3.3</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>JAX-RS</artifactId><version>1.1.1</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>jboss-logging</artifactId><version>3.1.1.GA</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>jersey-apache-client4</artifactId><version>1.17</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>Jersey</artifactId><version>1.17</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>Jettison</artifactId><version>1.1</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>jetty</artifactId><version>6.1.15</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>jetty-util</artifactId><version>6.1.15</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>jgrapht</artifactId><version>0.8.3</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>jmock</artifactId><version>2.4.0</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>jsoup</artifactId><version>1.7.1</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>jug</artifactId><version>2.0.0</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>junit</artifactId><version>3.8.1</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>junitee</artifactId><version>1.1</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>log4j</artifactId><version>2.1</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>disruptor</artifactId><version>3.3.0</version><type>pom</type></dependency>
+	  <!-- <dependency><groupId>thirdparty_tools</groupId><artifactId>log4j</artifactId><version>1.2.15</version><type>pom</type></dependency>-->
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>lucene</artifactId><version>3.3.0</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>objenesis</artifactId><version>1.2</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>pingfederate</artifactId><version>2.4.1</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>proxool</artifactId><version>0.9.0RC3</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>QDox</artifactId><version>2.0</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>quartz</artifactId><version>1.6.0.1</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>saxon</artifactId><version>9.0.0.4</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>slf4j</artifactId><version>1.6.6_log4j21</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>sojo</artifactId><version>0.5.0</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>Spring</artifactId><version>3.0.5_full</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>spring-security-jwt</artifactId><version>1.0.3</version><type>pom</type></dependency> 
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>tibco_ems_java</artifactId><version>7.0</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>toplinkgrid</artifactId><version>11.1.1.4.0_17244308</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>user-agent-utils</artifactId><version>1.6</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>xmlbeans</artifactId><version>2.5.0</version><type>pom</type></dependency>
+	  <dependency><groupId>thirdparty_tools</groupId><artifactId>xmlpull</artifactId><version>1.1.3.1</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>xmlunit</artifactId><version>1.5</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>xstream</artifactId><version>1.4.3</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>xpp3_min</artifactId><version>1.1.4c</version><type>pom</type></dependency>
+      <dependency><groupId>thirdparty_tools</groupId><artifactId>zxing</artifactId><version>2.2</version><type>pom</type></dependency> <!--<dependency><groupId>thirdparty_tools</groupId><artifactId>slf4j-log4j12</artifactId><version>1.6.6</version><type>pom</type></dependency>-->
+   </dependencies>
+  </dependencyManagement>
+
+  <dependencies>
+    <dependency>
+      <groupId>thirdparty_tools</groupId>
+      <artifactId>junit</artifactId>
+      <type>pom</type>
+      <scope>test</scope>
+    </dependency>
+	<dependency>
+      <groupId>thirdparty_tools</groupId>
+      <artifactId>junitee</artifactId>
+      <type>pom</type>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>2.3.2</version>
+        </plugin>
+          <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-jar-plugin</artifactId>
+          <version>2.3.1</version>
+          <configuration>
+            <forced>false</forced>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-ear-plugin</artifactId>
+          <version>2.7</version>
+          <configuration>
+            <forced>false</forced>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>2.1.1</version>
+          <configuration>
+            <forced>false</forced>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-assembly-plugin</artifactId>
+          <version>2.2.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-surefire-plugin</artifactId>
+          <version>2.8</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-release-plugin</artifactId>
+          <version>2.2.1</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-deploy-plugin</artifactId>
+          <version>2.7</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-dependency-plugin</artifactId>
+          <version>2.2</version>
+        </plugin>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-resources-plugin</artifactId>
+          <version>2.5</version>
+        </plugin>
+        <plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>build-helper-maven-plugin</artifactId>
+          <version>1.6</version>
+        </plugin>
+		<plugin>
+          <groupId>org.codehaus.mojo</groupId>
+          <artifactId>versions-maven-plugin</artifactId>
+          <version>2.4</version>
+        </plugin>
+		
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-antrun-plugin</artifactId>
+          <version>1.7_oocl</version>
+          <!-- configure ant-run to use ant-contrib tasks -->
+          <dependencies>
+            <dependency>
+              <groupId>ant-contrib</groupId>
+              <artifactId>ant-contrib</artifactId>
+              <version>1.0</version>
+              <scope>system</scope>
+              <systemPath>${env.ANT_HOME}/lib/ant-contrib.jar</systemPath>
+            </dependency>
+            <dependency>
+              <groupId>ant-ml</groupId>
+              <artifactId>ant-ml</artifactId>
+              <version>1.0</version>
+              <scope>system</scope>
+              <systemPath>${env.M2_HOME}/lib/ml-ant-http-1.1.3.jar</systemPath>
+            </dependency>
+          </dependencies>
+        </plugin>
+
+        <plugin>
+          <groupId>ir4.plugin</groupId>
+          <artifactId>vpp-plugin</artifactId>
+          <version>1.1</version>
+        </plugin>
+        <plugin>
+          <groupId>ir4.plugin</groupId>
+          <artifactId>propertyInject</artifactId>
+          <version>1.0</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
+
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <fork>true</fork>
+          <source>${java-version}</source>
+          <target>${java-version}</target>
+          <encoding>${project.build.sourceEncoding}</encoding>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <configuration>
+          <archive>
+            <manifestEntries>
+              <Implementation-Title>${project.artifactId}</Implementation-Title>
+              <Implementation-Vendor>OOCL Framework</Implementation-Vendor>
+              <Implementation-Version>${project.version}</Implementation-Version>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-enforcer-plugin</artifactId>
+        <version>1.0.1</version>
+        <executions>
+          <execution>
+            <id>enforce-versions</id>
+            <goals>
+              <goal>enforce</goal>
+            </goals>
+            <phase>compile</phase>
+            <configuration>
+              <ignoreCache>true</ignoreCache>
+              <rules>
+                <DependencyConvergence/>
+                <requireJavaVersion>
+                  <version>[1.6.0-20,)</version>
+                </requireJavaVersion>
+                <requireMavenVersion>
+                  <version>[3.0.3,3.0.4]</version>
+                </requireMavenVersion>
+              </rules>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-antrun-plugin</artifactId>
+        <executions>
+          <execution>
+            <id>check-deploy</id>
+            <phase>install</phase>
+            <configuration>
+              <exportAntProperties>true</exportAntProperties>
+              <target>
+                <taskdef resource="net/sf/antcontrib/antcontrib.properties"/>
+                <taskdef resource="net/sf/antcontrib/antlib.xml" />
+
+                <!-- copy external vars to a local copy, since we cant change them -->
+                <var name="locSkipCheck" value="${skipCheck}"/>
+                <var name="locSkipDev" value="${skipDev}"/>
+
+                <!-- if snapshot version, then always upload -->
+                <propertyregex property="testSnapshot" input="${project.version}" select="\1" regexp="(-SNAPSHOT)" casesensitive="false"/>
+                <if>
+                  <equals arg1="${testSnapshot}" arg2="-SNAPSHOT"/>
+                  <then>
+                    <property name="skipDeploy" value="false"/>
+                    <equals arg1="${locSkipCheck}" arg2="true"/>
+                    <echo>Deploy shapsnot version </echo>
+                  </then>
+                </if>
+
+                <if>
+                  <and>
+                    <equals arg1="${locSkipDev}" arg2="true"/>
+                    <equals arg1="${build.type}" arg2="dev"/>
+                  </and>
+                  <then>
+                    <var name="locSkipCheck" value="true"/>
+                    <echo>Skip uploading ${project.artifactId} for Dev environment</echo>
+                  </then>
+                </if>
+
+                <if>
+                  <equals arg1="${locSkipCheck}" arg2="true"/>
+                  <then>
+                    <property name="skipDeploy" value="true"/>
+                    <echo>Skipping deployment check</echo>
+                  </then>
+                  <else>
+                    <taskdef name="http" classname="org.missinglink.ant.task.http.HttpClientTask"/>
+                    <var name="urlToUse" unset="true"/>
+                    <var name="skipDeploy" unset="true"/>
+
+                    <if>
+                      <isset property="artifactClassifier"/>
+                      <then>
+                        <property name="urlToUse" value="${repoHost}/api/search/gavc?g=${project.groupId}&amp;a=${project.artifactId}&amp;v=${project.version}&amp;c=${artifactClassifier}&amp;repos=${searchRepo}"/>
+                      </then>
+                      <else>
+                        <property name="urlToUse" value="${repoHost}/api/search/gavc?g=${project.groupId}&amp;a=${project.artifactId}&amp;v=${project.version}&amp;repos=${searchRepo}"/>
+                      </else>
+                    </if>
+
+                    <echo>URL to use: ${urlToUse} </echo>
+                   <http url="${urlToUse}"
+                          printresponse="false" printresponseheaders="false"
+                          printrequest="false" printrequestheaders="false"
+                          failonunexpected="false" statusProperty="searchStatus" entityProperty="entityProperty" />
+                    <mkdir dir="${basedir}/target"/>
+                    <if>
+                      <equals arg1="${searchStatus}" arg2="200"/>
+                      <then>
+                        <propertyregex property="entityProperty" input="${entityProperty}" regexp="\r?\n" replace=""  override="true"/>
+                        <propertyregex property="entityProperty" input="${entityProperty}" regexp="\s" replace=""  override="true"/>
+                        <echo>Response : ${entityProperty}</echo>
+                        <if>
+                            <equals arg1="${entityProperty}" arg2="{&quot;results&quot;:[]}" />
+                            <then>
+                                <property name="skipDeploy" value="false"/>
+                                <echo file="${basedir}/target/deploy.txt" append="false">${project.groupId}:${project.artifactId}:${project.version}</echo> 
+                                <echo>${project.groupId}:${project.artifactId}:${project.version} do NOT exist in remote repository -- deployment will be proceed</echo>
+                                <echo>Added ${basedir}/target/deploy.txt</echo>
+                            </then>
+                            <else>
+                                <echo>${project.groupId}:${project.artifactId}:${project.version} exists in remote repository -- deployment skipped</echo>
+                                <property name="skipDeploy" value="true"/>
+                                <delete file="${basedir}/target/deploy.txt" failonerror="false"/>
+                            </else>
+                        </if> mvn in
+                      </then>
+                      <else>
+                        <property name="skipDeploy" value="false"/>
+                        <echo>${project.groupId}:${project.artifactId}:${project.version} do NOT exist in remote repository -- deployment will be proceed</echo>
+                        <echo file="${basedir}/target/deploy.txt" append="false">${project.groupId}:${project.artifactId}:${project.version}</echo>
+                        <echo>added ${basedir}/target/deploy.txt</echo>
+                      </else>
+                    </if>
+					<delete file="${basedir}/target/info.txt" failonerror="false"/>
+                    <echo file="${basedir}/target/info.txt" append="false">${project.groupId}:${project.artifactId}:${project.version}</echo>
+                  </else>
+                </if>
+
+                <echo>skipDeploy set to ${skipDeploy}</echo>
+              </target>
+            </configuration>
+            <goals>
+              <goal>run</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!-- turn off deployment if artifact exists in artifactory -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-deploy-plugin</artifactId>
+        <configuration>
+          <skip>${skipDeploy}</skip>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
+
+</project>
